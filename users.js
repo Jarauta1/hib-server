@@ -20,6 +20,31 @@ router.post("/", function (req,res){
     })
 })
 
+router.delete("/update", function (req,res){
+    let id = req.body.id
+    let name =req.body.name
+    let surname = req.body.surname
+    let email = req.body.email
+    let token = req.body.token
+    let type = req.body.type
+    
+    fetch(`http://51.38.51.187:5050/api/v1/users/${id}`,{
+      method: "PUT",
+      headers: {
+        "Authorization": `${type} ${token}`
+      },
+      body: JSON.stringify({
+        name: name, 
+        surname: surname, 
+        email: email
+      }),
+    }).then((res)=>res.json()).then((data)=>{ 
+      res.send({data: data})
+    }).catch(err => {
+      res.send({err:err})
+    })
+})
+
 router.delete("/delete", function (req,res){
     let id = req.body.id
     let token = req.body.token
