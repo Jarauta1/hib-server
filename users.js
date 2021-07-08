@@ -20,13 +20,14 @@ router.post("/", function (req,res){
     })
 })
 
-router.delete("/update", function (req,res){
+router.put("/update", function (req,res){
     let id = req.body.id
-    let name =req.body.name
+    let name = req.body.name
     let surname = req.body.surname
     let email = req.body.email
     let token = req.body.token
     let type = req.body.type
+    let password = req.body.password
     
     fetch(`http://51.38.51.187:5050/api/v1/users/${id}`,{
       method: "PUT",
@@ -34,12 +35,15 @@ router.delete("/update", function (req,res){
         "Authorization": `${type} ${token}`
       },
       body: JSON.stringify({
+        email: email,
+        password: password,
         name: name, 
-        surname: surname, 
-        email: email
+        surname: surname,
+        id: id, 
       }),
     }).then((res)=>res.json()).then((data)=>{ 
       res.send({data: data})
+      console.log(data)
     }).catch(err => {
       res.send({err:err})
     })
