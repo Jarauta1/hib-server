@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const app = express();
 
 const fetch = require("node-fetch")
 
@@ -24,4 +23,4 @@ router.post("/", function (req,res){
         })
 })
 
- module.exports = router;
+module.exports = router;

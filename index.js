@@ -2,9 +2,6 @@ const express = require("express");
 
 const app = express();
 const cors = require("cors");
-const fetch = require("node-fetch")
-const bcrypt = require("bcrypt");
-const encryption = require("./encryption")
 
 let signUp = require("./signUp")
 let logIn = require("./logIn")

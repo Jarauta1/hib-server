@@ -1,4 +1,3 @@
-const express = require("express");
 const bcrypt = require("bcrypt");
 
 function encryption(req, res, next) {

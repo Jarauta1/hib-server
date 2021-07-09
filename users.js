@@ -42,7 +42,6 @@ router.put("/update", function (req,res){
       }),
     }).then((res)=>res.json()).then((data)=>{ 
       res.send({data: data})
-      console.log(data)
     }).catch(err => {
       res.send({err:err})
     })
@@ -65,4 +64,4 @@ router.delete("/delete", function (req,res){
     })
 })
 
- module.exports = router;
+module.exports = router;
