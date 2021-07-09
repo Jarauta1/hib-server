@@ -9,6 +9,8 @@ router.post("/", encryption, function (req,res){
     let surnameSignUp = req.body.surnameSignUp
     let passwordSignUp = req.body.passwordSignUp
     let emailSignUp = req.body.emailSignUp
+    let header
+    let status
     
     fetch("http://51.38.51.187:5050/api/v1/auth/sign-up",{
       method: "POST",
@@ -23,12 +25,13 @@ router.post("/", encryption, function (req,res){
         password: passwordSignUp
       }),
     }).then((res)=>{
-      header = res.status
+      header = res.headers
+      status = res.status
       return(res.json())
     }).then((data)=>{ 
-      res.send({data: data, header: header})
+      res.send({data: data, status: status, header: header})
     }).catch(err => {
-      res.send({header:header})
+      res.send({status:status, header:header})
     })
 })
 
